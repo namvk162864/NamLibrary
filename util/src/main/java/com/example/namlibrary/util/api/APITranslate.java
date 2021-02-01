@@ -92,7 +92,7 @@ public class APITranslate {
     public interface TranslateResult {
         void onSuccess(String translatedText);
 
-        void onFailure(String ErrorText);
+        void onFailure(String errorText);
     }
 
     public static class Language {
