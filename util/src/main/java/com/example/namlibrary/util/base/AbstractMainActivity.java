@@ -54,28 +54,28 @@ public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> exte
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    private void setNightMode() {
+    protected void setNightMode() {
         // set state dark mode
         sharePreNightMode = new SharePreNightMode(this, getNameSharePreNightMode());
         int isNightMode = sharePreNightMode.getNightMode();
         AppCompatDelegate.setDefaultNightMode(isNightMode);
     }
 
-    public String getNameSharePreNightMode() {
+    protected String getNameSharePreNightMode() {
         return "nameSharePreNightMode";
     }
 
-    public abstract String[] getPermissions();
+    protected abstract String[] getPermissions();
 
-    private void onActive() {
+    protected void onActive() {
         initSharePre();
         initDataAndAttachView(savedInstanceState);
         clickListener();
     }
 
-    public abstract void initSharePre();
+    protected abstract void initSharePre();
 
-    public abstract void initDataAndAttachView(Bundle savedInstanceState);
+    protected abstract void initDataAndAttachView(Bundle savedInstanceState);
 
-    public abstract void clickListener();
+    protected abstract void clickListener();
 }

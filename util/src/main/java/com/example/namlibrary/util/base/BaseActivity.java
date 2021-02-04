@@ -36,13 +36,13 @@ public abstract class BaseActivity<ItemBinding extends ViewBinding> extends AppC
         clickListener();
     }
 
-    public abstract void initSharePre();
+    protected abstract void initSharePre();
 
-    public abstract void initDataAndAttachView(Bundle savedInstanceState);
+    protected abstract void initDataAndAttachView(Bundle savedInstanceState);
 
-    public abstract void clickListener();
+    protected abstract void clickListener();
 
-    public void requirePermission() {
+    protected void requirePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
             /*
              *  required:

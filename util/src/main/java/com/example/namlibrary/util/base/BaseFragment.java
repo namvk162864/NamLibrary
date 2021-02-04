@@ -44,9 +44,9 @@ public abstract class BaseFragment<ItemBinding extends ViewBinding, T> extends F
         return binding.getRoot();
     }
 
-    public abstract void initListAndAttachView();
+    protected abstract void initListAndAttachView();
 
-    public abstract void onActive(T t);
+    protected abstract void onActive(T t);
 
-    public abstract void clickListener();
+    protected abstract void clickListener();
 }
