@@ -1,6 +1,9 @@
 package com.example.namlibrary.util.base;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
@@ -29,16 +32,27 @@ public abstract class BaseActivity<ItemBinding extends ViewBinding> extends AppC
             e.printStackTrace();
         }
 
-        requirePermission();
         initDataAndAttachView(savedInstanceState);
         clickListener();
     }
 
     public abstract void initSharePre();
 
-    public abstract void requirePermission();
-
     public abstract void initDataAndAttachView(Bundle savedInstanceState);
 
     public abstract void clickListener();
+
+    public void requirePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            /*
+             *  required:
+             *  display pop-up windows while running in the background
+             *  display pop-up window
+             */
+            Intent intent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+            intent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
+            intent.putExtra("extra_pkgname", getPackageName());
+            startActivity(intent);
+        }
+    }
 }
