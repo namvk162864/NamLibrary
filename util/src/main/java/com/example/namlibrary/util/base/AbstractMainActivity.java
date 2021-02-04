@@ -19,8 +19,8 @@ import java.lang.reflect.Type;
 
 public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> extends AppCompatActivity {
     protected ItemBinding binding;
-    Bundle savedInstanceState;
-    SharePreNightMode sharePreNightMode;
+    protected Bundle savedInstanceState;
+    protected SharePreNightMode sharePreNightMode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
