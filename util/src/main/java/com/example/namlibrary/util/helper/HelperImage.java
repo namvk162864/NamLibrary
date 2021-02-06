@@ -1,11 +1,13 @@
 package com.example.namlibrary.util.helper;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.ahmadrosid.svgloader.SvgLoader;
 import com.example.namlibrary.util.R;
 import com.example.namlibrary.util.log.LogTag;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -13,6 +15,10 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class HelperImage {
+    public static void showImageSvg(Activity activity, String im, ImageView imageView) {
+        SvgLoader.pluck().with(activity).load(im, imageView);
+    }
+
     public static void showImage(String im, ImageView imageView) {
         Picasso.get().load(im).into(imageView, new Callback() {
             @Override
