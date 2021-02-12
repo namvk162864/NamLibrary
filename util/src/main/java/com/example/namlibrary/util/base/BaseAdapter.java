@@ -13,9 +13,17 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public abstract class BaseAdapter<ItemBinding extends ViewBinding, T> extends RecyclerView.Adapter<BaseViewHolder<ItemBinding, T>> {
-    private final ArrayList<T> arrayList;
+    private ArrayList<T> arrayList;
 
     public BaseAdapter(ArrayList<T> arrayList) {
+        setArrayList(arrayList);
+    }
+
+    public ArrayList<T> getArrayList() {
+        return arrayList;
+    }
+
+    public void setArrayList(ArrayList<T> arrayList) {
         this.arrayList = arrayList;
     }
 
