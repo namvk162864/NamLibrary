@@ -12,7 +12,13 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public abstract class BaseAdapter<ItemBinding extends ViewBinding, T> extends RecyclerView.Adapter<BaseViewHolder<ItemBinding, T>> {
+public abstract class BaseAdapter<ItemBinding extends ViewBinding, T, Interface> extends RecyclerView.Adapter<BaseViewHolder<ItemBinding, T>> {
+    protected Interface itf;
+
+    public void onClick(Interface itf) {
+        this.itf = itf;
+    }
+
     private ArrayList<T> arrayList;
 
     public BaseAdapter(ArrayList<T> arrayList) {
