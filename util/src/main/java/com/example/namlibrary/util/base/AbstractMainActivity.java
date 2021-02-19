@@ -37,6 +37,8 @@ public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> exte
             e.printStackTrace();
         }
 
+        welcome();
+
         if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(getPermissions(), 1000);
         } else {
@@ -71,6 +73,11 @@ public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> exte
         initSharePre();
         initDataAndAttachView(savedInstanceState);
         clickListener();
+    }
+
+    protected void welcome() {
+        // TODO something here to welcome
+        // This is a splash screen
     }
 
     protected abstract void initSharePre();
