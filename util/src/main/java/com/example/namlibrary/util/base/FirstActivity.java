@@ -2,6 +2,7 @@ package com.example.namlibrary.util.base;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
@@ -17,7 +18,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> extends AppCompatActivity {
+public abstract class FirstActivity<ItemBinding extends ViewBinding> extends AppCompatActivity {
     protected ItemBinding binding;
     protected Bundle savedInstanceState;
     protected SharePreNightMode sharePreNightMode;
@@ -37,21 +38,29 @@ public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> exte
             e.printStackTrace();
         }
 
-        welcome();
+        preview();
+        checkPermission();
+    }
 
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(getPermissions(), 1000);
-        } else {
-            onActive();
-        }
+    protected void checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+                requestPermissions(getPermissions(), 1000);
+            else onActive();
+        } else onActive();
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 1000) {
+            boolean grant = true;
             for (int result : grantResults)
-                if (result == PackageManager.PERMISSION_DENIED) return;
-            onActive();
+                if (result == PackageManager.PERMISSION_DENIED) {
+                    grant = false;
+                    break;
+                }
+            if (grant) onActive();
+            else checkPermission();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -75,12 +84,14 @@ public abstract class AbstractMainActivity<ItemBinding extends ViewBinding> exte
         clickListener();
     }
 
-    protected void welcome() {
+    protected void preview() {
         // TODO something here to welcome
         // This is a splash screen
     }
 
-    protected abstract void initSharePre();
+    protected void initSharePre() {
+        // TODO something here
+    }
 
     protected abstract void initDataAndAttachView(Bundle savedInstanceState);
 

@@ -2,8 +2,6 @@ package com.example.namlibrary.util.helper;
 
 import android.os.Build;
 
-import com.example.namlibrary.util.log.LogTag;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,7 +10,7 @@ public class HelperString {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return String.join(sep, list);
         }
-        return LogTag.TAG_404;
+        return "";
     }
 
     public static ArrayList<String> split(String s, String sep) {

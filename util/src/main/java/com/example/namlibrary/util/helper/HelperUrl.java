@@ -1,6 +1,5 @@
 package com.example.namlibrary.util.helper;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,8 +23,8 @@ public class HelperUrl {
         fragment.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
-    public static void loadContentFromUrl(Activity activity, String url, MultiThread.ITFResult<ArrayList<String>> itfResult) {
-        MultiThread.execute(activity, () -> {
+    public static void loadContentFromUrl(String url, MultiThread.ITFResult<ArrayList<String>> itfResult) {
+        MultiThread.execute(() -> {
             ArrayList<String> list = new ArrayList<>();
             try {
                 HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();

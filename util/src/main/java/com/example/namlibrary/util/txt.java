@@ -18,7 +18,7 @@ public class txt {
         l2t(list, path_txt, modeClearAllFile);
     }
 
-    private static void l2t(ArrayList<String> list, String path_txt, String mode) {
+    public static void l2t(ArrayList<String> list, String path_txt, String mode) {
         try {
             File file = new File(path_txt);
             if (!file.exists()) file.createNewFile();

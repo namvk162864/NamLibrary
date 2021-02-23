@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewbinding.ViewBinding;
+
+import com.example.namlibrary.util.data.sharepre.SharePreNightMode;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -16,9 +19,11 @@ import java.lang.reflect.Type;
 
 public abstract class BaseActivity<ItemBinding extends ViewBinding> extends AppCompatActivity {
     protected ItemBinding binding;
+    protected SharePreNightMode sharePreNightMode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setNightMode();
         initSharePre();
 
         super.onCreate(savedInstanceState);
@@ -36,7 +41,20 @@ public abstract class BaseActivity<ItemBinding extends ViewBinding> extends AppC
         clickListener();
     }
 
-    protected abstract void initSharePre();
+    protected void setNightMode() {
+        // set state dark mode
+        sharePreNightMode = new SharePreNightMode(this, getNameSharePreNightMode());
+        int isNightMode = sharePreNightMode.getNightMode();
+        AppCompatDelegate.setDefaultNightMode(isNightMode);
+    }
+
+    protected String getNameSharePreNightMode() {
+        return "nameSharePreNightMode";
+    }
+
+    protected void initSharePre() {
+        // TODO something here
+    }
 
     protected abstract void initDataAndAttachView(Bundle savedInstanceState);
 
