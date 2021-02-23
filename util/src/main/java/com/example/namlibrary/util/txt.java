@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class txt {
-    private static final String modeClearAllFile = "w";
+    public static String modeClearAllFile = "w";
 
     public static void l2t(ArrayList<String> list, String path_txt) {
         l2t(list, path_txt, modeClearAllFile);

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewbinding.ViewBinding;
 
+import com.example.namlibrary.util.R;
 import com.example.namlibrary.util.data.sharepre.SharePreNightMode;
 
 import java.lang.reflect.Method;
@@ -67,13 +68,15 @@ public abstract class FirstActivity<ItemBinding extends ViewBinding> extends App
 
     protected void setNightMode() {
         // set state dark mode
-        sharePreNightMode = new SharePreNightMode(this, getNameSharePreNightMode());
+        sharePreNightMode = new SharePreNightMode(this);
         int isNightMode = sharePreNightMode.getNightMode();
         AppCompatDelegate.setDefaultNightMode(isNightMode);
+        setTheme(isNightMode == AppCompatDelegate.MODE_NIGHT_YES ? R.style.AppThemeDark : R.style.AppTheme);
     }
 
-    protected String getNameSharePreNightMode() {
-        return "nameSharePreNightMode";
+    protected void preview() {
+        // TODO something here to welcome
+        // This is a splash screen
     }
 
     protected abstract String[] getPermissions();
@@ -82,11 +85,6 @@ public abstract class FirstActivity<ItemBinding extends ViewBinding> extends App
         initSharePre();
         initDataAndAttachView(savedInstanceState);
         clickListener();
-    }
-
-    protected void preview() {
-        // TODO something here to welcome
-        // This is a splash screen
     }
 
     protected void initSharePre() {
