@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBarOverlay">true</item>
 
         <item name="android:statusBarColor">#fff</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
@@ -16,6 +17,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBarOverlay">true</item>
 
         <item name="android:statusBarColor">#000</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
