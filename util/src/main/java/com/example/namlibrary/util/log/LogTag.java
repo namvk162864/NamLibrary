@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class LogTag {
-    public static String TAG_DEBUG = "zzz";
+    public static String TAG_DEBUG = "zxcv";
     public static String TAG_404 = "404 Not Found";
 
     public static void loglog(String message) {
